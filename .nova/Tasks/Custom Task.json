@@ -1,0 +1,9 @@
+{
+  "actions" : {
+    "run" : {
+      "enabled" : true,
+      "script" : "php artisan serve"
+    }
+  },
+  "identifier" : "B1AA578D-0DE6-4A94-BA8A-27B3BFF7A23C"
+}
