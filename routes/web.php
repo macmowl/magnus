@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\backend\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,17 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+
+// User Management routes
+Route::prefix('users')->group(function() {
+    Route::get('/', [UserController::class, 'showAll'])->name('user.view');
+    Route::get('/new', [UserController::class, 'addUser'])->name('user.new');
+    Route::post('/store', [UserController::class, 'storeUser'])->name('user.store');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('admin.index');

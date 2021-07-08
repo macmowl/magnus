@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/css/skin_color.css') }}">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
   </head>
 
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
@@ -50,10 +52,52 @@
     <script src="{{ asset('../assets/vendor_components/easypiechart/dist/jquery.easypiechart.js') }}"></script>
     <script src="{{ asset('../assets/vendor_components/apexcharts-bundle/irregular-data-series.js') }}"></script>
     <script src="{{ asset('../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js') }}"></script>
+    <script src="{{ asset('../assets/vendor_components/datatable/datatables.min.js') }}"></script>
+    <script src="{{ asset('backend/js/pages/data-table.js') }}"></script>
 
     <!-- Sunny Admin App -->
     <script src="{{ asset('backend/js/template.js') }}"></script>
     <script src="{{ asset('backend/js/pages/dashboard.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        @if(Session::has('message'))
+            toastr.options = {
+                  "closeButton": true,
+                  "debug": false,
+                  "newestOnTop": false,
+                  "progressBar": false,
+                  "positionClass": "toast-bottom-right",
+                  "preventDuplicates": false,
+                  "onclick": null,
+                  "showDuration": "300",
+                  "hideDuration": "1000",
+                  "timeOut": "5000",
+                  "extendedTimeOut": "1000",
+                  "showEasing": "swing",
+                  "hideEasing": "linear",
+                  "showMethod": "fadeIn",
+                  "hideMethod": "fadeOut"
+                }
+            let type = "{{ Session::get('alert-type', 'info') }}"
+            switch(type) {
+                case 'info':
+                    toastr.info("{{ Session::get('message') }}");
+                    break;
+                case 'success':
+                    toastr.info("{{ Session::get('message') }}");
+                    break;
+                case 'warning':
+                    toastr.info("{{ Session::get('message') }}");
+                    break;
+                case 'error':
+                    toastr.info("{{ Session::get('message') }}");
+                    break;
+            }
+        @endif
+    </script>
+
 
 
 </body>
