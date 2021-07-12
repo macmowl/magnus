@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Http\Controllers\backend;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Auth;
+use Image;
+use App\Models\User;
+
+class ProfileController extends Controller
+{
+    public function showProfile() {
+        $user = Auth::user();
+        return view('backend.users.profile', compact('user'));
+    }
+
+    public function editProfile() {
+        $user = Auth::user();
+        return view('backend.users.edit-profile', compact('user'));
+    }
+
+    public function updateProfile(Request $request) {
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->role = $request->role;
+        $user->gender = $request->gender;
+        $user->mobile = $request->mobile;
+        $user->address = $request->address;
+        $user->status = $request->status;
+
+        if ($request->profile_photo_path) {
+            $avatar = $request->file('profile_photo_path');
+            $name_gen = hexdec(uniqid()) . '.' . $avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(200, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save('storage/profile-photos/' . $name_gen);
+            $user->profile_photo_path = 'profile-photos/' . $name_gen;
+        }
+        $user->save();
+
+        $notification = array(
+            'message' => 'Profile successfully updated',
+            'alert-type' => 'success',
+        );
+        return Redirect()->route('profile.view')->with($notification);
+
+    }
+}

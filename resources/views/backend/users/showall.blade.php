@@ -28,8 +28,8 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
-                        <a href="" class="btn"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                        <a href="" class="btn"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a href="{{ route('user.edit', $user->id) }}" class="btn"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        <a href="{{ route('user.delete', $user->id) }}" id="delete" class="btn"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </td>
                 </tr>
             @endforeach

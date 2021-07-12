@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\UserController;
+use App\Http\Controllers\backend\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,16 @@ Route::prefix('users')->group(function() {
     Route::get('/', [UserController::class, 'showAll'])->name('user.view');
     Route::get('/new', [UserController::class, 'addUser'])->name('user.new');
     Route::post('/store', [UserController::class, 'storeUser'])->name('user.store');
+    Route::get('/edit/{id}', [UserController::class, 'editUser'])->name('user.edit');
+    Route::post('/edit/{id}', [UserController::class, 'updateUser'])->name('user.edit');
+    Route::get('/delete/{id}', [UserController::class, 'deleteUser'])->name('user.delete');
+});
+
+// User profile
+Route::prefix('profile')->group(function() {
+    Route::get('/', [ProfileController::class, 'showProfile'])->name('profile.view');
+    Route::get('/edit', [ProfileController::class, 'editProfile'])->name('profile.edit');
+    Route::post('/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

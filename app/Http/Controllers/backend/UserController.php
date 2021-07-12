@@ -38,4 +38,39 @@ class UserController extends Controller
 
         return redirect()->route('user.view')->with($notification);
     }
+
+    public function editUser($id) {
+        $user = User::find($id);
+        return view('backend.users.edit', compact('user'));
+    }
+
+    public function updateUser(Request $request, $id) {
+        $validation = $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users'
+        ]);
+
+        $data = User::find($id);
+        $data->role = $request->role;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->save();
+
+        $notification = array(
+            'message' => 'User successfully updated',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('user.view')->with($notification);
+    }
+
+    public function deleteUser($id) {
+        User::find($id)->delete();
+        $notification = array(
+            'message' => 'User successfully deleted',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('user.view')->with($notification);
+    }
 }
