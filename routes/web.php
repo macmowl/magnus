@@ -37,6 +37,7 @@ Route::prefix('profile')->group(function() {
     Route::get('/', [ProfileController::class, 'showProfile'])->name('profile.view');
     Route::get('/edit', [ProfileController::class, 'editProfile'])->name('profile.edit');
     Route::post('/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
+    Route::post('/password-update', [ProfileController::class, 'updatePassword'])->name('password.update');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

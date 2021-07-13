@@ -119,17 +119,26 @@
                             <div class="form-group">
                                 <h5>Current password <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="password" name="current_password" class="form-control" required data-validation-required-message="This field is required"> </div>
+                                    <input type="password" id="current_password" name="current_password" class="form-control" required> </div>
+                                    @error('current_password')
+                                        <span class="text-danger">{{$message}}</span>
+                                    @enderror
                             </div>
                             <div class="form-group">
                                 <h5>Set new password <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="password" name="password" class="form-control" required data-validation-required-message="This field is required"> </div>
+                                    <input type="password" id="password" name="password" class="form-control" required data-validation-required-message="This field is required"> </div>
+                                    @error('password')
+                                        <span class="text-danger">{{$message}}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <h5>Confirm password <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="password" name="password_confirmation" class="form-control" required> </div>
+                                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required> </div>
+                                    @error('password_confirmation')
+                                        <span class="text-danger">{{$message}}</span>
+                                    @enderror
                             </div>
                         </div>
                       </div>

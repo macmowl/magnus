@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Image;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -45,5 +46,29 @@ class ProfileController extends Controller
         );
         return Redirect()->route('profile.view')->with($notification);
 
+    }
+
+    public function updatePassword(Request $request) {
+        $validation = $request->validate([
+            "current_password" => "required",
+            "password" => "required|confirmed"
+        ]);
+
+        $hashedPassword = Auth::user()->password;
+
+        if (Hash::check($request->current_password, $hashedPassword)) {
+            $user = Auth::user();
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            $notification = array(
+                'message' => 'Password successfully updated',
+                'alert-type' => 'success',
+            );
+
+            return redirect()->route('profile.view')->with($notification);
+        } else {
+            return redirect()->back();
+        }
     }
 }
