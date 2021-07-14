@@ -42,7 +42,7 @@ class ProfileController extends Controller
 
         $notification = array(
             'message' => 'Profile successfully updated',
-            'alert-type' => 'success',
+            'alert-type' => 'success'
         );
         return Redirect()->route('profile.view')->with($notification);
 
