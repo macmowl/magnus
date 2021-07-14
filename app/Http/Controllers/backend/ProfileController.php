@@ -45,7 +45,7 @@ class ProfileController extends Controller
             'alert-type' => 'success'
         );
         return Redirect()->route('profile.view')->with($notification);
-
+        // ceci est un commentaire
     }
 
     public function updatePassword(Request $request) {
