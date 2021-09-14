@@ -1,3 +1,10 @@
+@php
+    $prefix = Request::route()->getPrefix();
+    $route = Route::current()->getName();
+
+
+@endphp
+
 <aside class="main-sidebar">
 <!-- sidebar-->
 <section class="sidebar">
@@ -17,14 +24,14 @@
   <!-- sidebar menu-->
   <ul class="sidebar-menu" data-widget="tree">
 
-    <li>
-      <a href="index.html">
+    <li class=" {{ ($route == 'dashboard') ? 'active' : '' }}">
+      <a href="{{ route('dashboard') }}">
         <i data-feather="pie-chart"></i>
         <span>Dashboard</span>
       </a>
     </li>
 
-    <li class="treeview">
+    <li class="treeview {{ ($prefix == '/users') ? 'active' : '' }}">
       <a href="#">
         <i data-feather="message-circle"></i>
         <span>Users</span>
@@ -38,34 +45,25 @@
       </ul>
     </li>
 
-    <li class="treeview">
-      <a href="#">
-        <i data-feather="mail"></i> <span>Mailbox</span>
+    <li class="treeview {{ ($prefix == '/profile') ? 'active' : '' }}">
+      <a href="{{ route('profile.view')}}">
+        <i data-feather="profile"></i> <span>Profile</span>
         <span class="pull-right-container">
           <i class="fa fa-angle-right pull-right"></i>
         </span>
       </a>
-      <ul class="treeview-menu">
-        <li><a href="mailbox_inbox.html"><i class="ti-more"></i>Inbox</a></li>
-        <li><a href="mailbox_compose.html"><i class="ti-more"></i>Compose</a></li>
-        <li><a href="mailbox_read_mail.html"><i class="ti-more"></i>Read</a></li>
-      </ul>
     </li>
 
-    <li class="treeview">
+    <li class="treeview {{ ($prefix == '/setup') ? 'active' : '' }}">
       <a href="#">
         <i data-feather="file"></i>
-        <span>Pages</span>
+        <span>Setup</span>
         <span class="pull-right-container">
           <i class="fa fa-angle-right pull-right"></i>
         </span>
       </a>
       <ul class="treeview-menu">
-        <li><a href="profile.html"><i class="ti-more"></i>Profile</a></li>
-        <li><a href="invoice.html"><i class="ti-more"></i>Invoice</a></li>
-        <li><a href="gallery.html"><i class="ti-more"></i>Gallery</a></li>
-        <li><a href="faq.html"><i class="ti-more"></i>FAQs</a></li>
-        <li><a href="timeline.html"><i class="ti-more"></i>Timeline</a></li>
+        <li><a href="{{ route('student.class.view') }}"><i class="ti-more"></i>Student Class</a></li>
       </ul>
     </li>
 

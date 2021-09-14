@@ -86,13 +86,13 @@
                     toastr.info("{{ Session::get('message') }}");
                     break;
                 case 'success':
-                    toastr.info("{{ Session::get('message') }}");
+                    toastr.success("{{ Session::get('message') }}");
                     break;
                 case 'warning':
-                    toastr.info("{{ Session::get('message') }}");
+                    toastr.warning("{{ Session::get('message') }}");
                     break;
                 case 'error':
-                    toastr.info("{{ Session::get('message') }}");
+                    toastr.error("{{ Session::get('message') }}");
                     break;
             }
         @endif
