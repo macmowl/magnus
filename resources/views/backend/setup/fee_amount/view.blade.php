@@ -22,10 +22,10 @@
             @foreach($allData as $key => $amount)
                 <tr>
                     <td>{{ $key + 1 }}</td>
-                    <td>{{ $amount->fee_category_id }}</td>
+                    <td>{{ $amount['fee_category']['name'] }}</td>
                     <td>
-                        <a href="{{ route('fee.amount.edit', $amount->id) }}" class="btn"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                        <a href="{{ route('fee.amount.delete', $amount->id) }}" id="delete" class="btn"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a href="{{ route('fee.amount.edit', $amount->fee_category_id) }}" class="btn"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                        <a href="{{ route('fee.amount.details', $amount->fee_category_id) }}" class="btn">Details</a>
                     </td>
                 </tr>
             @endforeach

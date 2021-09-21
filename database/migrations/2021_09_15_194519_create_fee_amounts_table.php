@@ -18,7 +18,6 @@ class CreateFeeAmountsTable extends Migration
             $table->integer('fee_category_id');
             $table->integer('class_id');
             $table->double('amount');
-            $table->string('name')->unique();
             $table->timestamps();
         });
     }

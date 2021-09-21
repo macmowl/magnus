@@ -92,6 +92,10 @@ Route::prefix('setup')->group(function() {
     // Fee Category
     Route::get('fee/amount/view', [FeeAmountController::class, 'ViewFeeAmount'])->name('fee.amount.view');
     Route::get('fee/amount/add', [FeeAmountController::class, 'AddFeeAmount'])->name('fee.amount.add');
+    Route::post('fee/amount/store', [FeeAmountController::class, 'StoreFeeAmount'])->name('fee.amount.store');
+    Route::get('fee/amount/edit/{id}', [FeeAmountController::class, 'EditFeeAmount'])->name('fee.amount.edit');
+    Route::post('fee/amount/update/{id}', [FeeAmountController::class, 'UpdateFeeAmount'])->name('fee.amount.update');
+    Route::get('fee/amount/details/{id}', [FeeAmountController::class, 'DetailsFeeAmount'])->name('fee.amount.details');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
