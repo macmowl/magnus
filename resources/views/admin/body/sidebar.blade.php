@@ -69,6 +69,9 @@
         <li><a href="{{ route('shift.view') }}"><i class="ti-more"></i>Shift</a></li>
         <li><a href="{{ route('fee.category.view') }}"><i class="ti-more"></i>Fee category</a></li>
         <li><a href="{{ route('fee.amount.view') }}"><i class="ti-more"></i>Fee category Amount</a></li>
+        <li><a href="{{ route('exam.type.view') }}"><i class="ti-more"></i>Exam type</a></li>
+        <li><a href="{{ route('school.subject.view') }}"><i class="ti-more"></i>School Subject</a></li>
+        <li><a href="{{ route('assign.subject.view') }}"><i class="ti-more"></i>Assign Subject</a></li>
       </ul>
     </li>
 
