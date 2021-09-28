@@ -90,46 +90,37 @@
         <div class="delete_whole_extra_item_add" id="delete_whole_extra_item_add">
             <div class="form-row">
                 <div class="col">
-                <hr>
-                    <form method="post" action="">
-                    @csrf
-                      <div class="row">
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col col-md-6">
-                                    <div class="form-group">
-                                        <h5>Student Class <span class="text-danger">*</span></h5>
-                                        <div class="controls">
-                                            <select name="class_id[]" id="select" required class="form-control">
-                                                <option value="" disabled="">Select fee category</option>
-                                                @foreach($classes as $class)
-                                                    <option value="{{ $class->id }}">{{ $class->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col col-md-3">
-                                    <div class="form-group">
-                                        <h5>Amount <span class="text-danger">*</span></h5>
-                                        <div class="controls">
-                                            <input type="text" name="amount[]" class="form-control" required data-validation-required-message="This field is required">
-                                            @error('name')
-                                                <span class="tet-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col col-md-3 pt-20">
-                                    <span class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i></span>
-                                    <span class="btn btn-danger removeeventmore"><i class="fa fa-minus-circle"></i></span>
+                    <hr>
+                    <div class="row">
+                        <div class="col col-md-6">
+                            <div class="form-group">
+                                <h5>Student Class <span class="text-danger">*</span></h5>
+                                <div class="controls">
+                                    <select name="class_id[]" id="select" required class="form-control">
+                                        <option value="" disabled="">Select fee category</option>
+                                        @foreach($classes as $class)
+                                            <option value="{{ $class->id }}">{{ $class->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
-
-
                         </div>
-                      </div>
-                    </form>
+                        <div class="col col-md-3">
+                            <div class="form-group">
+                                <h5>Amount <span class="text-danger">*</span></h5>
+                                <div class="controls">
+                                    <input type="text" name="amount[]" class="form-control" required data-validation-required-message="This field is required">
+                                    @error('name')
+                                        <span class="tet-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-md-3 pt-20">
+                            <span class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i></span>
+                            <span class="btn btn-danger removeeventmore"><i class="fa fa-minus-circle"></i></span>
+                        </div>
+                    </div>
 
                 </div>
             </div>

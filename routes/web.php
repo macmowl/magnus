@@ -123,6 +123,14 @@ Route::prefix('setup')->group(function() {
     Route::get('assign/subject/edit/{id}', [AssignSubjectController::class, 'EditAssignSubject'])->name('assign.subject.edit');
     Route::post('assign/subject/update/{id}', [AssignSubjectController::class, 'UpdateAssignSubject'])->name('assign.subject.update');
     Route::get('assign/subject/details/{id}', [AssignSubjectController::class, 'DetailsAssignSubject'])->name('assign.subject.details');
+
+    // Designation
+    Route::get('designation/view', [SchoolSubjectController::class, 'ViewSchoolSubject'])->name('designation.view');
+    Route::get('designation/add', [SchoolSubjectController::class, 'AddSchoolSubject'])->name('designation.add');
+    Route::post('designation/store', [SchoolSubjectController::class, 'StoreSchoolSubject'])->name('designation.store');
+    Route::get('designation/edit/{id}', [SchoolSubjectController::class, 'EditSchoolSubject'])->name('designation.edit');
+    Route::post('designation/update/{id}', [SchoolSubjectController::class, 'UpdateSchoolSubject'])->name('designation.update');
+    Route::get('designation/delete/{id}', [SchoolSubjectController::class, 'DeleteSchoolSubject'])->name('designation.delete');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
