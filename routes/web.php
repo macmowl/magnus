@@ -13,6 +13,9 @@ use App\Http\Controllers\backend\Setup\FeeAmountController;
 use App\Http\Controllers\backend\Setup\ExamTypeController;
 use App\Http\Controllers\backend\Setup\SchoolSubjectController;
 use App\Http\Controllers\backend\Setup\AssignSubjectController;
+use App\Http\Controllers\backend\Setup\DesignationController;
+use App\Http\Controllers\backend\Students\RegistrationController;
+use App\Http\Controllers\backend\Students\RollController;
 
 /*
 |--------------------------------------------------------------------------
@@ -125,12 +128,30 @@ Route::prefix('setup')->group(function() {
     Route::get('assign/subject/details/{id}', [AssignSubjectController::class, 'DetailsAssignSubject'])->name('assign.subject.details');
 
     // Designation
-    Route::get('designation/view', [SchoolSubjectController::class, 'ViewSchoolSubject'])->name('designation.view');
-    Route::get('designation/add', [SchoolSubjectController::class, 'AddSchoolSubject'])->name('designation.add');
-    Route::post('designation/store', [SchoolSubjectController::class, 'StoreSchoolSubject'])->name('designation.store');
-    Route::get('designation/edit/{id}', [SchoolSubjectController::class, 'EditSchoolSubject'])->name('designation.edit');
-    Route::post('designation/update/{id}', [SchoolSubjectController::class, 'UpdateSchoolSubject'])->name('designation.update');
-    Route::get('designation/delete/{id}', [SchoolSubjectController::class, 'DeleteSchoolSubject'])->name('designation.delete');
+    Route::get('designation/view', [DesignationController::class, 'ViewDesignation'])->name('designation.view');
+    Route::get('designation/add', [DesignationController::class, 'AddDesignation'])->name('designation.add');
+    Route::post('designation/store', [DesignationController::class, 'StoreDesignation'])->name('designation.store');
+    Route::get('designation/edit/{id}', [DesignationController::class, 'EditDesignation'])->name('designation.edit');
+    Route::post('designation/update/{id}', [DesignationController::class, 'UpdateDesignation'])->name('designation.update');
+    Route::get('designation/delete/{id}', [DesignationController::class, 'DeleteDesignation'])->name('designation.delete');
+});
+
+Route::prefix('students')->group(function() {
+
+    //Student Registration
+    Route::get('registration/view', [RegistrationController::class, 'ViewRegistration'])->name('registration.view');
+    Route::get('registration/add', [RegistrationController::class, 'AddRegistration'])->name('student.registration.add');
+    Route::post('registration/store', [RegistrationController::class, 'StoreRegistration'])->name('student.registration.store');
+    Route::get('registration/wise', [RegistrationController::class, 'WiseRegistration'])->name('student.registration.wise');
+    Route::get('registration/edit/{id}', [RegistrationController::class, 'EditRegistration'])->name('student.registration.edit');
+    Route::post('registration/update/{student_id}', [RegistrationController::class, 'UpdateRegistration'])->name('student.registration.update');
+    Route::get('registration/promo/{student_id}', [RegistrationController::class, 'PromoteRegistration'])->name('student.registration.promotion');
+    Route::post('registration/promo/update/{student_id}', [RegistrationController::class, 'PromoteUpdateRegistration'])->name('student.registration.promoupdate');
+    Route::get('registration/details/{student_id}', [RegistrationController::class, 'DetailsRegistration'])->name('student.registration.details');
+
+    // Student roll generation
+    Route::get('roll/generate/view', [RollController::class, 'ViewRoll'])->name('roll.generate.view');
+
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

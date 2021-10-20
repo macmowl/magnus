@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDesignationsTable extends Migration
+class CreateDiscountStudentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateDesignationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('designations', function (Blueprint $table) {
+        Schema::create('discount_students', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->integer('assign_student_id')->nullable();
+            $table->integer('fee_category_id')->nullable();
+            $table->double('discount')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateDesignationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('designations');
+        Schema::dropIfExists('discount_students');
     }
 }

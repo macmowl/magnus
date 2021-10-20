@@ -47,7 +47,7 @@
                                     <select name="role" id="select" required class="form-control">
                                         <option value="">Select role</option>
                                         <option value="Admin" {{ $user->role == "Admin" ? "selected" : null }} >Admin</option>
-                                        <option value="User" {{ $user->role == "User" ? "selected" : null }}>User</option>
+                                        <option value="User" {{ $user->role == "Operator" ? "selected" : null }}>Operator</option>
                                     </select>
                                 </div>
                             </div>
